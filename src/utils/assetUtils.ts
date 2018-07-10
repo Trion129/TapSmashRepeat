@@ -92,27 +92,6 @@ export class Loader {
         }
     }
 
-    private static loadAudiosprites() {
-        for (let audio in Assets.Audiosprites) {
-            let soundName = Assets.Audiosprites[audio].getName();
-            this.soundKeys.push(soundName);
-
-            if (!this.game.cache.checkSoundKey(soundName)) {
-                let audioTypeArray = [];
-
-                for (let option of Object.getOwnPropertyNames(Assets.Audiosprites[audio])) {
-                    if (option !== 'getName' && option !== 'getJSON' && option !== 'Sprites' && option.includes('get')) {
-                        audioTypeArray.push(Assets.Audiosprites[audio][option]());
-                    }
-                }
-
-                audioTypeArray = this.orderAudioSourceArrayBasedOnSoundExtensionPreference(audioTypeArray);
-
-                this.game.load.audiosprite(soundName, audioTypeArray, Assets.Audiosprites[audio].getJSON(), null, true);
-            }
-        }
-    }
-
     private static loadBitmapFonts() {
         for (let font in Assets.BitmapFonts) {
             if (!this.game.cache.checkBitmapFontKey(Assets.BitmapFonts[font].getName())) {
@@ -189,7 +168,6 @@ export class Loader {
         this.loadSpritesheets();
         this.loadAtlases();
         this.loadAudio();
-        this.loadAudiosprites();
         this.loadBitmapFonts();
         this.loadJSON();
         this.loadXML();
