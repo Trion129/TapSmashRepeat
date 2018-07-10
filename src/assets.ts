@@ -6,6 +6,11 @@ export namespace Images {
 
         static getPNG(): string { return require('assets/images/background_template.png'); }
     }
+    export class ImagesButton {
+        static getName(): string { return 'button'; }
+
+        static getPNG(): string { return require('assets/images/button.png'); }
+    }
     export class SpritesheetsObsidian {
         static getName(): string { return 'obsidian'; }
 
@@ -92,7 +97,8 @@ export namespace Audiosprites {
 }
 
 export namespace GoogleWebFonts {
-    export const Barrio: string = 'Barrio';
+    export const Righteous: string = 'Righteous';
+    export const Roboto: string = 'Roboto';
 }
 
 export namespace CustomWebFonts {
@@ -140,11 +146,7 @@ export namespace Scripts {
     class IExistSoTypeScriptWillNotComplainAboutAnEmptyNamespace {}
 }
 export namespace Shaders {
-    export class ShadersPixelate {
-        static getName(): string { return 'pixelate'; }
-
-        static getFRAG(): string { return require('assets/shaders/pixelate.frag'); }
-    }
+    class IExistSoTypeScriptWillNotComplainAboutAnEmptyNamespace {}
 }
 export namespace Misc {
     class IExistSoTypeScriptWillNotComplainAboutAnEmptyNamespace {}
