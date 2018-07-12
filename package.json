@@ -37,7 +37,7 @@
     "commander": "2.13.0",
     "copy-webpack-plugin": "4.3.1",
     "echo-cli": "1.0.8",
-    "electron": "1.7.11",
+    "electron": "^2.0.4",
     "electron-packager": "10.1.1",
     "expose-loader": "0.7.4",
     "file-loader": "1.1.6",
