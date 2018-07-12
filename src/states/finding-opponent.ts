@@ -31,11 +31,11 @@ export default class MainMenu extends Phaser.State {
         this.playGameText.anchor.setTo(0.5);
 
         this.opponent = new Opponent(this.id, this.game, this.game.world.centerX, this.game.world.centerY - 200);
+
+        this.opponent.findOpponent(this.onFound.bind(this));
     }
 
     onFound(): void {
-        this.playGameText.text = 'Found! Starting...';
-
-        this.game.state.start('mode-select', true, false, this.id);
+        this.game.state.start('gamestate', true, false, this.id, this.opponent);
     }
 }

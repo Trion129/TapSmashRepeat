@@ -35,6 +35,6 @@ export default class ModeSelect extends Phaser.State {
     }
 
     onStartButton(id: number): void {
-        this.game.state.start('gamestate', true, false, id);
+        this.game.state.start('finding-opponent', true, false, id);
     }
 }

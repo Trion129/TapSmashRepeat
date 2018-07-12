@@ -10,11 +10,22 @@ export default class GameState extends Phaser.State {
     init(id: number, opponent: Opponent) {
         this.id = id;
 
-        this.player = new Player(this.id, this.game, this.game.world.centerX, 2 / 3 * this.game.world.height, this.playerBroke);
+        this.player = new Player(this.id,
+            this.game, this.game.world.centerX, this.game.world.centerY + 200,
+            this.playerFrameChanged.bind(this), this.playerBroke.bind(this));
+
         this.opponent = opponent;
+        opponent.display();
+        opponent.listenOpponentFinished(this.opponentBroke.bind(this));
+        opponent.listenOpponentFrame();
+    }
+
+    playerFrameChanged(frame: number) {
+        this.opponent.sendPlayerFrame(frame);
     }
 
     playerBroke() {
+        this.opponent.sendPlayerFinished();
         console.log('Player broke');
     }
 
