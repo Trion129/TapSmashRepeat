@@ -11,25 +11,39 @@ export namespace Images {
 
         static getPNG(): string { return require('assets/images/button.png'); }
     }
-    export class SpritesheetsObsidian {
-        static getName(): string { return 'obsidian'; }
-
-        static getPNG(): string { return require('assets/spritesheets/obsidian.png'); }
-    }
-    export class SpritesheetsStone {
-        static getName(): string { return 'stone'; }
-
-        static getPNG(): string { return require('assets/spritesheets/stone.png'); }
-    }
-    export class SpritesheetsWood {
-        static getName(): string { return 'wood'; }
-
-        static getPNG(): string { return require('assets/spritesheets/wood.png'); }
-    }
 }
 
 export namespace Spritesheets {
-    class IExistSoTypeScriptWillNotComplainAboutAnEmptyNamespace {}
+    export class SpritesheetsObsidian646410 {
+        static getName(): string { return 'obsidian.[64,64,10,0,0]'; }
+
+        static getPNG(): string { return require('assets/spritesheets/obsidian.[64,64,10,0,0].png'); }
+        static getFrameWidth(): number { return 64; }
+        static getFrameHeight(): number { return 64; }
+        static getFrameMax(): number { return 10; }
+        static getMargin(): number { return 0; }
+        static getSpacing(): number { return 0; }
+    }
+    export class SpritesheetsStone646410 {
+        static getName(): string { return 'stone.[64,64,10,0,0]'; }
+
+        static getPNG(): string { return require('assets/spritesheets/stone.[64,64,10,0,0].png'); }
+        static getFrameWidth(): number { return 64; }
+        static getFrameHeight(): number { return 64; }
+        static getFrameMax(): number { return 10; }
+        static getMargin(): number { return 0; }
+        static getSpacing(): number { return 0; }
+    }
+    export class SpritesheetsWood646410 {
+        static getName(): string { return 'wood.[64,64,10,0,0]'; }
+
+        static getPNG(): string { return require('assets/spritesheets/wood.[64,64,10,0,0].png'); }
+        static getFrameWidth(): number { return 64; }
+        static getFrameHeight(): number { return 64; }
+        static getFrameMax(): number { return 10; }
+        static getMargin(): number { return 0; }
+        static getSpacing(): number { return 0; }
+    }
 }
 
 export namespace Atlases {

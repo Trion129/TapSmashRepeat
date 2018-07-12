@@ -8,7 +8,7 @@ export default class MainMenu extends Phaser.State {
     public create(): void {
         this.game.stage.backgroundColor = '#F5F5F5';
 
-        this.mainMenuTitle = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 100, 'Stone Smasher', {
+        this.mainMenuTitle = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 100, 'Tap! Smash! Repeat!', {
             fontSize: 50,
             font: Assets.GoogleWebFonts.Righteous,
         });
@@ -32,6 +32,6 @@ export default class MainMenu extends Phaser.State {
     }
 
     onStartButton(): void {
-        this.game.state.start('Select Mode');
+        this.game.state.start('mode-select');
     }
 }
