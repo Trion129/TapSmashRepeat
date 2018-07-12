@@ -14,7 +14,6 @@ import * as Utils from './utils/utils';
 import * as Assets from './assets';
 
 class App extends Phaser.Game {
-
     constructor(config: Phaser.IGameConfig) {
         super (config);
 
