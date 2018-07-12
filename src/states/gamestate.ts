@@ -1,11 +1,9 @@
 import * as Assets from '../assets';
-import Player from '../utils/Player';
-import Opponent from '../utils/Opponent';
+import Player from '../classes/Player';
+import Opponent from '../classes/Opponent';
 
 export default class GameState extends Phaser.State {
     private id: number;
-    private playerSprite: Phaser.Button;
-    private opponentSprite: Phaser.Button;
     private player: Player;
     private opponent: Opponent;
 

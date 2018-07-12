@@ -5,6 +5,9 @@
 node_modules
 server/node_modules
 
+# Openode
+server/.openode
+
 # Game
 dist
 builds

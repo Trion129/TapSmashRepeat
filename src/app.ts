@@ -9,8 +9,8 @@ import Preloader from './states/preloader';
 import MainMenu from './states/main-menu';
 import ModeSelect from './states/mode-select';
 import GameState from './states/gamestate';
+import FindingOpponent from './states/finding-opponent';
 
-import * as Utils from './utils/utils';
 import * as Assets from './assets';
 
 class App extends Phaser.Game {
@@ -22,22 +22,13 @@ class App extends Phaser.Game {
         this.state.add('main-menu', MainMenu);
         this.state.add('mode-select', ModeSelect);
         this.state.add('gamestate', GameState);
+        this.state.add('finding-opponent', FindingOpponent);
 
         this.state.start('boot');
     }
 }
 
 function startApp(): void {
-    let gameWidth: number = DEFAULT_GAME_WIDTH;
-    let gameHeight: number = DEFAULT_GAME_HEIGHT;
-
-    if (SCALE_MODE === 'USER_SCALE') {
-        let screenMetrics: Utils.ScreenMetrics = Utils.ScreenUtils.calculateScreenMetrics(gameWidth, gameHeight);
-
-        gameWidth = screenMetrics.gameWidth;
-        gameHeight = screenMetrics.gameHeight;
-    }
-
     // There are a few more options you can set if needed, just take a look at Phaser.IGameConfig
     let gameConfig: Phaser.IGameConfig = {
         width: '100%',

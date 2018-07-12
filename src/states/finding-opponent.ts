@@ -1,6 +1,6 @@
 import * as Assets from '../assets';
 
-import Opponent from '../utils/Opponent';
+import Opponent from '../classes/Opponent';
 
 export default class MainMenu extends Phaser.State {
     private id: number;
