@@ -1,7 +1,7 @@
 {
-  "name": "phaser-npm-webpack-typescript-starter-project",
-  "productName": "phaser-npm-webpack-typescript-starter-project",
-  "version": "1.8.7",
+  "name": "tapsmashrepeat",
+  "productName": "Tap Smash Repeat",
+  "version": "0.8.0",
   "main": "electron-main.js",
   "scripts": {
     "webpack:dev": "webpack --config webpack.dev.config.js --progress --colors",
@@ -22,13 +22,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rroylance/phaser-npm-webpack-typescript-starter-project.git"
+    "url": "git@github.com:Trion129/TapSmashRepeat.git"
   },
-  "author": "Richard Roylance <https://github.com/rroylance>",
+  "author": "Parminder Singh <https://github.com/trion129>",
   "bugs": {
-    "url": "https://github.com/rroylance/phaser-npm-webpack-typescript-starter-project/issues"
+    "url": "https://github.com/Trion129/TapSmashRepeat/issues"
   },
-  "homepage": "https://github.com/rroylance/phaser-npm-webpack-typescript-starter-project#readme",
+  "homepage": "https://github.com/Trion129/TapSmashRepeat/issues#readme",
   "dependencies": {
     "@types/node": "9.3.0",
     "@types/socket.io-client": "^1.4.32",
