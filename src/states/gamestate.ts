@@ -16,8 +16,9 @@ export default class GameState extends Phaser.State {
 
         this.opponent = opponent;
         opponent.display();
-        opponent.listenOpponentFinished(this.opponentBroke.bind(this));
+        opponent.listenOpponentFinished(this.opponentWon.bind(this));
         opponent.listenOpponentFrame();
+        opponent.listenPlayerWon(this.playerWon.bind(this));
     }
 
     playerFrameChanged(frame: number) {
@@ -29,7 +30,11 @@ export default class GameState extends Phaser.State {
         console.log('Player broke');
     }
 
-    opponentBroke() {
+    playerWon() {
+        console.log('Player Won');
+    }
+
+    opponentWon() {
         console.log('Opponent broke');
     }
 

@@ -10,8 +10,10 @@ app.get('/', function (req, res) {
 });
 
 const queue = [];
+const rooms = {};
 
 io.on('connection', function (socket) {
+    let roomId;
     id = socket.id;
     console.log(id + ' has joined');
     
@@ -20,29 +22,36 @@ io.on('connection', function (socket) {
         if(queue.length > 0){
             opponentId = queue.shift();
             opponentSocket = io.sockets.sockets[opponentId];
-            
+
+            let room = [socket, opponentSocket];
+
             roomId = uuid();
-            
-            socket.join(roomId);
-            opponentSocket.join(roomId);
 
-            roomSocket = io.sockets.to(roomId);
+            rooms[roomId] = room;
 
-            roomSocket.on('nextFrame', (data) => {
-                console.log('nextFrame', data);
-                roomSocket.emit('nextFrame-broad', data);
-            });
+            socket.roomId = roomId;
+            opponentSocket.roomId = roomId;
 
-            roomSocket.on('finished', (data) => {
-                let winner = data.id;
-                console.log('Finished', clients);
+            room.forEach((socket, index) => {
+                let opponent = (index + 1) % 2;
+                let playerSocket = socket, opponentSocket = room[opponent];
 
-                roomSocket.clients((err , clients) => {
-                    console.log('Removing', clients);
-                    let loserId = clients.filter(client_id => client_id !== winner)[0];
+                socket.on('nextFrame', (data)=>{
+                    io.sockets.to(opponentSocket.id).emit('nextFrame', data);
+                });
 
-                    roomSocket.to(loserId).emit('lost');
-                    roomSocket.to(winner).emit('won');
+                socket.on('finished', _ => {
+                    console.log('Finished');
+                    io.sockets.to(opponentSocket.id).emit('lost');
+                    io.sockets.to(playerSocket.id).emit('won');
+
+                    opponentSocket.roomId = undefined;
+                    playerSocket.roomId = undefined;
+
+                    opponentSocket.disconnect();
+                    playerSocket.disconnect();
+
+                    delete rooms[roomId];
                 });
             });
 
@@ -64,6 +73,25 @@ io.on('connection', function (socket) {
     
     socket.on('disconnect', function (data) {
         console.log(id + ' has disconnected');
-        queue.pop(queue.indexOf(id));
+
+        let indexInQueue = queue.indexOf(id);
+        if (indexInQueue !== -1){
+            queue.pop(queue.indexOf(id));
+        }
+
+        let roomId = socket.roomId;
+
+        if(roomId !== undefined){
+            console.log(rooms);
+            room = rooms[roomId];
+            room.forEach((socketInRoom)=>{
+                if(socketInRoom.id !== socket.id){
+                    socketInRoom.emit('won');
+                    socketInRoom.roomId = undefined;
+                }
+            });
+        }
+
+        delete rooms[roomId];
     });
 });

@@ -44,7 +44,7 @@ export default class Opponent extends Phaser.Sprite {
     }
 
     listenOpponentFrame() {
-        this.io.on('nextFrame-broad', (data) => {
+        this.io.on('nextFrame', (data) => {
             this.frame = data.frame;
         });
     }
@@ -59,6 +59,12 @@ export default class Opponent extends Phaser.Sprite {
         this.io.on('lost', _ => {
             callback();
             this.kill();
+        });
+    }
+
+    listenPlayerWon(callback: Function) {
+        this.io.on('won', _ => {
+            callback();
         });
     }
 
